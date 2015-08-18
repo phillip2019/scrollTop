@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <script type="text/javascript" src="http://libs.useso.com/js/jquery/1.8.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var bottom = false;
+			var top = false;
+			
+            $(document).scroll(function() {
+				
+                //$(document).scrollTop() 获取垂直滚动的距离
+                //$(document).scrollLeft() 这是获取水平滚动条的距离
+                if (!top && $(document).scrollTop() <= 0) {
+                    alert("滚动条已经到达顶部为0");
+					top = true;
+                } else {
+					top = false;
+				}
+
+				var b_check = (($(document).scrollTop() + 1) > $(document).height() - $(window).height());
+				if (!b_check) {
+					bottom = false;
+				} else {
+					if (!bottom) {
+						bottom = true;
+						console.log((new Date()).getTime() + '-' + bottom);
+						alert("滚动条已经到达底部为" + $(document).scrollTop());
+					}
+				}
+				
+            });
+        });
+   
+   
+    </script>
+
+</head>
+<body style="margin:0;padding:0;">
+    <form id="form1" runat="server">
+    <div style="height: 3000px; background-color: Blue;">
+    </div>
+    </form>
+</body>
+</html>
